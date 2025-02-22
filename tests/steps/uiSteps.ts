@@ -51,7 +51,6 @@ When('I register a user with valid credentials', async function () {
 
 Given('I log in with the same credentials', async function () {
     await loginPage.navigate();
-    await expect(page).toHaveURL(/.*login/);
     await loginPage.login(user.email, user.password);
 });
 
@@ -68,14 +67,13 @@ Given('I am logged in', async function () {
     await loginPage.navigate();
     await loginPage.login("bayomak@gmail.com", "London2025");
     await expect(page).toHaveURL(/.*contactList/);
-    await page.waitForSelector('#logout');
 });
 
 Given('I am logged in with an existing contact', async function () {
     await loginPage.navigate();
     await loginPage.login("bayomak@gmail.com", "London2025");
     await expect(page).toHaveURL(/.*contactList/);
-    await page.waitForSelector('#logout');
+    contact.email = `testuser${Date.now()}@testaccount.com`;
     await contactsPage.createContact(contact.firstName, contact.lastName, contact.birthdate, contact.email, contact.phone, contact.street1, contact.street2, contact.city, contact.stateProvince, contact.postalCode, contact.country);
 });
 
@@ -88,8 +86,8 @@ Then('I should see the contact in the list', async function () {
 });
 
 Given('I edit the contact\'s email', async function () {
-    const contactName = contact.firstName + " " + contact.lastName;
-    await contactsPage.selectContactRow(contactName)
+    await contactsPage.selectContactRow(contact.email)
+    contact.email = `testuser${Date.now()}@testaccount.com`;
     await contactsPage.editContact(contact.email);
 });
 

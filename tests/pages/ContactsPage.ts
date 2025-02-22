@@ -1,44 +1,52 @@
 import BasePage from './BasePage';
-import {expect} from "@playwright/test";
+import {expect, Locator} from "@playwright/test";
+import {Page} from "playwright";
 
 export default class ContactsPage extends BasePage {
-    async createContact(firstName: string, lastName: string, birthDate: string, email: string, phone: string, street1: string, street2: string, city: string, stateProvince: string, postalCode: string, country: string) {
-        await this.page.click('#add-contact');
-        await this.page.waitForSelector('#firstName');
-        await this.page.fill('#firstName', firstName);
-        await this.page.fill('#lastName', lastName);
-        await this.page.fill('#birthdate', birthDate);
-        await this.page.fill('#email', email);
-        await this.page.fill('#phone', phone);
-        await this.page.fill('#street1', street1);
-        await this.page.fill('#street2', street2);
-        await this.page.fill('#city', city);
-        await this.page.fill('#stateProvince', stateProvince);
-        await this.page.fill('#postalCode', postalCode);
-        await this.page.fill('#country', country);
-        await this.page.click('#submit');
+    public logOut: Locator;
+
+    constructor(page: Page) {
+        super(page);
+        this.logOut = page.locator('#logout');
     }
 
-    async clickEditContact() {
-        await this.page.click('#edit-contact');
+    async createContact(firstName: string, lastName: string, birthDate: string, email: string, phone: string, street1: string, street2: string, city: string, stateProvince: string, postalCode: string, country: string): Promise<void> {
+        await this.page.locator('#add-contact').click();
+        await this.page.waitForSelector('#firstName');
+        await this.page.locator('#firstName').fill(firstName);
+        await this.page.locator('#lastName').fill(lastName);
+        await this.page.locator('#birthdate').fill(birthDate);
+        await this.page.locator('#email').fill(email);
+        await this.page.locator('#phone').fill(phone);
+        await this.page.locator('#street1').fill(street1);
+        await this.page.locator('#street2').fill(street2);
+        await this.page.locator('#city').fill(city);
+        await this.page.locator('#stateProvince').fill(stateProvince);
+        await this.page.locator('#postalCode').fill(postalCode);
+        await this.page.locator('#country').fill(country);
+        await this.page.locator('#submit').click();
+    }
+
+    async clickEditContact(): Promise<void> {
+        await this.page.locator('#edit-contact').click();
         await expect(this.page).toHaveURL(/.*editContact/);
     }
 
-    async editContact(newEmail: string) {
+    async editContact(newEmail: string): Promise<void> {
         await this.clickEditContact();
-        const handle = await this.page.$('#email');
-        await handle?.selectText();
+        const locator = this.page.locator('#email');
+        await locator.clear();
         await this.page.waitForLoadState('networkidle');
-        await handle?.fill(newEmail);
-        await this.page.click('#submit');
+        await locator.fill(newEmail);
+        await this.page.locator('#submit').click();
     }
 
-    async verifyContactExists(contactEmail: string) {
+    async verifyContactExists(contactEmail: string): Promise<void> {
         await this.page.waitForSelector('#myTable');
         await expect(this.page.locator(`text=${contactEmail}`)).toBeVisible();
     }
 
-    async selectContactRow(contactName: string) {
-        await this.page.click(`text=${contactName}`);
+    async selectContactRow(email: string): Promise<void> {
+        await this.page.locator(`text=${email}`).click();
     }
 }

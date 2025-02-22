@@ -5,12 +5,12 @@ export default defineConfig({
   retries: 1,
   use: {
     baseURL: 'https://thinking-tester-contact-list.herokuapp.com',
-    headless: true,
+    headless: false,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
   },
   reporter: [['html', { open: 'never' }], ['list']],
-  testDir: './tests',
+  testDir: 'tests',
   testMatch: /.*\.feature/,
   projects: [
     {

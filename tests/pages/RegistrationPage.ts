@@ -5,11 +5,11 @@ export default class RegistrationPage extends BasePage {
         await this.page.goto('https://thinking-tester-contact-list.herokuapp.com/addUser');
     }
 
-    async register(firstName: string, lastName: string, email: string, password: string) {
-        await this.page.fill('#firstName', firstName);
-        await this.page.fill('#lastName', lastName);
-        await this.page.fill('#email', email);
-        await this.page.fill('#password', password);
-        await this.page.click('#submit');
+    async register(firstName: string, lastName: string, email: string, password: string): Promise<void> {
+        await this.page.locator('#firstName').fill(firstName);
+        await this.page.locator('#lastName').fill(lastName);
+        await this.page.locator('#email').fill(email);
+        await this.page.locator('#password').fill(password);
+        await this.page.locator('#submit').click();
     }
 }

@@ -10,31 +10,31 @@ This project is a BDD-based test automation framework for the Ledger's Tester Co
 - Playwright browsers (install via `npx playwright install` after setup)
 
 ## Project Structure
-Ledger/
-├── package.json
-├── tsconfig.json
-├── cucumber.js
-├── playwright.config.ts         // Playwright configuration for test execution
-├── README.md
-├── Dockerfile                  // Docker configuration for the project
-├── .github/                    // GitHub Actions for CI/CD
-│   └── workflows/
-│       └── test.yml            // CI configuration for running tests
-├── tests/
-│   ├── api/
-│   │   ├── apiHelper.ts        // Helper functions for API tests
-│   ├── features/               // Tests and feature files
-│   │   ├── api.feature         // API test scenarios
-│   │   ├── ui.feature          // UI test scenarios
-│   ├── steps/                  // Step definitions
-│   │   ├── uiSteps.ts          // UI test step definitions
-│   │   ├── apiSteps.ts         // API test step definitions
-├── pages/
-│   ├── BasePage.ts             // Base class for page objects
-│   ├── RegistrationPage.ts     // Registration page object
-│   ├── LoginPage.ts            // Login page object
-│   └── ContactsPage.ts         // Contacts page object
-├── reports/                    // Test reports
+📂 Ledger/
+├── 📜 package.json                 # Project dependencies
+├── 📜 tsconfig.json                # TypeScript configuration
+├── 📜 cucumber.js                  # Cucumber configuration
+├── 📜 playwright.config.ts         # Playwright configuration for test execution
+├── 📜 README.md                    # Project documentation
+├── 📜 Dockerfile                   # Docker configuration for containerized tests
+├── 📂 .github/                      # GitHub Actions for CI/CD
+│   └── 📂 workflows/
+│       └── 📜 test.yml              # CI/CD pipeline configuration
+├── 📂 tests/                        # Test directory
+│   ├── 📂 api/                      # API test utilities
+│   │   ├── 📜 apiHelper.ts          # Helper functions for GraphQL API tests
+│   ├── 📂 features/                 # Feature files for tests
+│   │   ├── 📜 api.feature           # API test scenarios
+│   │   ├── 📜 ui.feature            # UI test scenarios
+│   ├── 📂 steps/                    # Step definitions for BDD
+│   │   ├── 📜 uiSteps.ts            # UI test step definitions
+│   │   ├── 📜 apiSteps.ts           # API test step definitions
+│   ├── 📂 pages/                    # Page Object Model for UI testing
+│   │   ├── 📜 BasePage.ts           # Base class for all page objects
+│   │   ├── 📜 RegistrationPage.ts   # Registration page object
+│   │   ├── 📜 LoginPage.ts          # Login page object
+│   │   ├── 📜 ContactsPage.ts       # Contacts page object
+├── 📂 reports/                      # Test report storage
 
 ## Setup
 1. Clone the repository or unzip folder.
