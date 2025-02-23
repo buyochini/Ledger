@@ -10,8 +10,11 @@ export default class ContactsPage extends BasePage {
         this.logOut = page.locator('#logout');
     }
 
-    async createContact(firstName: string, lastName: string, birthDate: string, email: string, phone: string, street1: string, street2: string, city: string, stateProvince: string, postalCode: string, country: string): Promise<void> {
+    async clickAddContact(): Promise<void> {
         await this.page.locator('#add-contact').click();
+    }
+
+    async createContact(firstName: string, lastName: string, birthDate: string, email: string, phone: string, street1: string, street2: string, city: string, stateProvince: string, postalCode: string, country: string): Promise<void> {
         await this.page.waitForSelector('#firstName');
         await this.page.locator('#firstName').fill(firstName);
         await this.page.locator('#lastName').fill(lastName);
