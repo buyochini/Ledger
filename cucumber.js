@@ -7,10 +7,11 @@ const config = {
     format: [
         'summary',
         'progress-bar',
-        'html:reports/cucumber-report.html',
-        'json:reports/cucumber-report.json',
+        'html:reports/cucumber/cucumber-report.html',
+        'json:reports/cucumber/cucumber-report.json',
+        'allure-cucumberjs/reporter'
     ],
-    formatOptions: { ...DEFAULT_THEME, snippetInterface: 'async-await' },
+    formatOptions: { ...DEFAULT_THEME, snippetInterface: 'async-await', resultsDir: "reports/allure/allure-results"},
     colors: true
 };
 
