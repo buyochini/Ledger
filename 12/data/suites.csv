@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","270","Delete a Contact via API","","Mon Feb 24 12:59:25 GMT 2025","passed","Mon Feb 24 12:59:26 GMT 2025","","","",""
+"","243","Create a Contact via API","","Mon Feb 24 12:59:25 GMT 2025","passed","Mon Feb 24 12:59:25 GMT 2025","","","",""
+"","1911","Edit an Existing Contact","","Mon Feb 24 12:59:33 GMT 2025","passed","Mon Feb 24 12:59:35 GMT 2025","","","",""
+"","2279","Create a New Contact","","Mon Feb 24 12:59:31 GMT 2025","passed","Mon Feb 24 12:59:33 GMT 2025","","","",""
+"","5005","User Registration and Login","","Mon Feb 24 12:59:26 GMT 2025","skipped","Mon Feb 24 12:59:31 GMT 2025","","","",""
+"","261","User Authentication via API","","Mon Feb 24 12:59:25 GMT 2025","passed","Mon Feb 24 12:59:25 GMT 2025","","","",""
