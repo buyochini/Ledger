@@ -33,8 +33,8 @@ jobs:
         if: always() # Execute even if previous steps fail
         continue-on-error: true # Continue execution even if the step fails
         with:
-          ref: main # Specify the branch to retrieve Allure history from
-          path: main # Set the destination path for Allure history
+          ref: gh-pages # Specify the branch to retrieve Allure history from
+          path: ph-pages # Set the destination path for Allure history
 
       - name: Allure report action # Step to generate Allure report
         uses: simple-elf/allure-report-action@master
@@ -49,5 +49,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # Provide the GitHub token for authentication
-          publish_branch: main # Specify the branch to publish the report to
+          publish_branch: gh-pages # Specify the branch to publish the report to
           publish_dir: allure-history # Specify the directory containing the report
