@@ -29,6 +29,12 @@ jobs:
         run: npm test
 
       - name: Generate Test Reports
-        run: |
-          npx mochawesome-merge reports/*.json > reports/report.json
-          npx mochawesome-report-generator reports/report.json
+        run: npx allure generate reports/allure/allure-results -o reports/allure/allure-report
+        if: always()
+
+      - name: Upload Allure Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: reports/allure/allure-report
